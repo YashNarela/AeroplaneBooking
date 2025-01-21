@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup with Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        form {
+            display: none;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label, .dashboard h2 {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 5px;
+        }
+        .signup-btn, .login-btn {
+            background-color: #007BFF;
+            color: white;
+        }
+        .submit-btn {
+            background-color: #28A745;
+            color: white;
+        }
+        .signup-btn:hover, .login-btn:hover, .submit-btn:hover {
+            opacity: 0.9;
+        }
+        #message {
+            margin-top: 15px;
+            font-size: 16px;
+            color: green;
+        }
+        .dashboard {
+            display: none;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login and Signup with Dashboard</h1>
+
+    <button class="signup-btn" onclick="showSignup()">Signup</button>
+    <button class="login-btn" onclick="showLogin()">Login</button>
+
+    <form id="signupForm">
+        <h2>Signup</h2>
+        <label for="signupUsername">Username:</label>
+        <input type="text" id="signupUsername" required>
+        <label for="signupPassword">Password:</label>
+        <input type="password" id="signupPassword" required>
+        <button type="button" class="submit-btn" onclick="signup()">Signup</button>
+    </form>
+
+    <form id="loginForm">
+        <h2>Login</h2>
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" required>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" required>
+        <button type="button" class="submit-btn" onclick="login()">Login</button>
+    </form>
+
+    <div class="dashboard" id="dashboard">
+        <h2>Welcome to your Dashboard</h2>
+        <p id="dashboardMessage"></p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function showSignup() {
+            document.getElementById('signupForm').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'none';
+        }
+
+        function showLogin() {
+            document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+        }
+
+        function signup() {
+            const username = document.getElementById('signupUsername').value;
+            const password = document.getElementById('signupPassword').value;
+
+            if (username && password) {
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const userExists = users.some(user => user.username === username);
+
+                if (userExists) {
+                    alert('Username already exists!');
+                } else {
+                    users.push({ username, password });
+                    localStorage.setItem('users', JSON.stringify(users));
+                    alert('Signup successful!');
+                    showLogin();  // Switch to login form after signup
+                }
+            } else {
+                alert('Please enter both username and password.');
+            }
+        }
+
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const validUser = users.find(user => user.username === username && user.password === password);
+
+            if (validUser) {
+                document.getElementById('dashboardMessage').innerText = `Hello, ${username}!`;
+                document.getElementById('signupForm').style.display = 'none';
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+            } else {
+                alert('Invalid username or password.');
+            }
+        }
+
+        function logout() {
+            alert('You have been logged out.');
+            showLogin();
+        }
+
+        // Initialize with signup form visible by default
+        showSignup();
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+<nav>
+        <div class="main-menu__left">
+            <div class="main-menu__logo">
+                <a href="">
+                    <img src="/Images/logo.png" alt="FlyNow" />
+                </a>
+            </div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="main-menu__nav">
+                <ul class="main-menu__list">
+                    <li class="current">
+                        <a href="index.html" class="active">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Flight</a>
+                        <ul class="sub-menu">
+                            <li><a href="flight-listing.html">Flight Listing</a></li>
+                            <li><a href="flight-booking.html">Flight Booking</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Car</a>
+                        <ul class="sub-menu">
+                            <li><a href="car-listing.html">Car Listing</a></li>
+                            <li><a href="car-booking.html">Car Booking</a></li>
+                            <li><a href="car-detail.html">Car Detail</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Hotel</a>
+                        <ul class="sub-menu">
+                            <li><a href="hotel-listing.html">Hotel Listing</a></li>
+                            <li><a href="hotel-booking.html">Hotel Booking</a></li>
+                            <li><a href="hotel-detail.html">Hotel Detail</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="tour-packages.html">Tour Package</a></li>
+                    <li class="dropdown">
+                        <a href="#">Pages</a>
+                        <ul class="sub-menu">
+                            <li><a href="about-us.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="sign-up.html">Signup</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">News</a>
+                        <ul class="sub-menu">
+                            <li><a href="blog-listing.html">News Listing</a></li>
+                            <li><a href="blog-detail.html">News Detail</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-menu__right">
+          <button> <a href="/login.htm">Login</a></button> 
+          <button>  <a href="/login.htm">Signup</a> </button>
+        </div>
+    </nav>
+
+    <div class="section1">
+      <div class="section1_part1">
+        <h1 class="">
+          <span class="section1_part1_span">Book</span> Your Dream
+          <span class="section1_part1_span">Flights</span> Now!
+        </h1>
+        <p class="dark-gray mb-24">
+          Lorem ipsum dolor sit amet consectetur. Felis tristique pretium leo
+          nisi at risus ac enim.
+        </p>
+         <button> <a href="./flight-booking.html">Book Now</a></button>
+      </div>
+
+      <div class="">
+        <div class="imageSection1">
+          <img src="./Images/plane.png" alt="" />
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="section3">
+
+
+      <div class="section3_sub">
+
+
+        <div class="section3_sub1">
+          
+          <button>Flights</button>
+         
+        </div>
+
+        <div class="section3_sub2">
+          <button>StopOver</button>
+          <button>Manage Booking</button>
+          <button>Flight Status</button>
+        </div>
+
+
+        <div class="section3_sub3">
+
+          <input type="radio">
+          <label for="">OneWay</label>
+
+          <input type="radio">
+          <label for="">Round Trip</label>
+
+          <input type="radio">
+          <label for="">Multi City</label>
+
+        </div>
+
+
+           <div class="booking-form">
+        <h2>Book Your Flight</h2>
+        <form>
+            <div class="form-group">
+                <label for="from">From</label>
+                <input type="text" id="from" name="from" placeholder="Enter departure location">
+            </div>
+            <div class="form-group">
+                <label for="to">To</label>
+                <input type="text" id="to" name="to" placeholder="Enter destination">
+            </div>
+            <div class="form-group inline">
+                <div class="form-group">
+                    <label for="departure-date">Departure Date</label>
+                    <input type="date" id="departure-date" name="departure-date">
+                </div>
+                <div class="form-group">
+                    <label for="return-date">Return Date</label>
+                    <input type="date" id="return-date" name="return-date">
+                </div>
+            </div>
+            <button id="btnfly" >Search Flights</button>
+        </form>
+    </div>
+      </div>
+
+
+      
+    </div>
+
+
+
+    <div class="display" id="display"></div>
+
+
+    <script src="/script.js"></script>
+  </body>
+</html>

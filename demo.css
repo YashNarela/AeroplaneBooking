@@ -1,0 +1,56 @@
+/* Basic reset for margin and padding */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav {
+    background-color: #333;
+}
+
+.navbar {
+    display: flex;
+    padding: 10px;
+}
+
+.navbar > li {
+    position: relative;
+    padding: 10px 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content li {
+    padding: 10px;
+}
+
+.dropdown-content a {
+    color: white;
+}
+
+.dropdown-content li:hover {
+    background-color: #555;
+}
+
+/* Hover effect to show dropdown */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.navbar > li:hover {
+    background-color: #555;
+}
