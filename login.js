@@ -1,51 +1,103 @@
-function showSignup() {
-  document.getElementById("signupForm").style.display = "block";
-  document.getElementById("loginForm").style.display = "none";
-  document.getElementById("message").innerText = "";
-}
+const container = document.querySelector(".container");
 
-function showLogin() {
-  document.getElementById("signupForm").style.display = "none";
-  document.getElementById("loginForm").style.display = "block";
-  document.getElementById("message").innerText = "";
-}
+const registerButton = document.querySelector(".register-btn");
 
-function signup() {
-  const username = document.getElementById("signupUsername").value;
-  const password = document.getElementById("signupPassword").value;
+const loginButton = document.querySelector(".login-btn");
 
-  if (username && password) {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const userExists = users.some((user) => user.username === username);
+registerButton.addEventListener("click", () => {
+  container.classList.add("active");
+});
 
-    if (userExists) {
-      alert("Username already exists!");
-    } else {
-      users.push({ username, password });
-      localStorage.setItem("users", JSON.stringify(users));
-      alert("Signup successful!");
-      showLogin(); 
-    }
-  } else {
-    alert("Please enter both username and password.");
+loginButton.addEventListener("click", () => {
+  container.classList.remove("active");
+});
+
+const loginForm = document.querySelector(".form-box.login form");
+const registerForm = document.querySelector(".form-box.register form");
+
+// Toggle between login and register panels
+registerButton.addEventListener("click", () => {
+  container.classList.add("register-active");
+});
+
+loginButton.addEventListener("click", () => {
+  container.classList.remove("register-active");
+});
+
+// Handle registration
+registerForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Get user input
+  const username = registerForm
+    .querySelector('input[placeholder="Username"]')
+    .value.trim();
+  const email = registerForm
+    .querySelector('input[placeholder="Email"]')
+    .value.trim();
+  const password = registerForm.querySelector(
+    'input[placeholder="password"]'
+  ).value;
+
+  alert(password);
+  if (!username || !email || !password) {
+    alert("All fields are required.");
+    return;
   }
-}
 
-function login() {
-  const username = document.getElementById("loginUsername").value;
-  const password = document.getElementById("loginPassword").value;
-
+  // Retrieve existing users from local storage
   const users = JSON.parse(localStorage.getItem("users")) || [];
-  const validUser = users.find(
-    (user) => user.username === username && user.password === password
+
+  // Check if the username or email already exists
+  const userExists = users.some(
+    (user) =>
+      user.username.toLowerCase() === username.toLowerCase() ||
+      user.email.toLowerCase() === email.toLowerCase()
   );
 
-  if (validUser) {
-    document.getElementById("message").innerText = `Welcome, ${username}!`;
+  if (userExists) {
+    alert("User already exists. Please use a different username or email.");
   } else {
-    alert("Invalid username or password.");
+    // Add the new user to the users array
+    users.push({ username, email, password });
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Registration successful! You can now log in.");
+    // Switch to login panel
+    container.classList.remove("register-active");
+    registerForm.reset();
   }
-}
+});
 
+// Handle login
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-showSignup();
+  // Get login input
+  const username = loginForm
+    .querySelector('input[placeholder="Username"]')
+    .value.trim();
+  const password = loginForm.querySelector(
+    'input[placeholder="password"]'
+  ).value;
+
+  if (!username || !password) {
+    alert("Both fields are required.");
+    return;
+  }
+
+  // Retrieve user data from local storage
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  const user = users.find(
+    (user) =>
+      user.username.toLowerCase() === username.toLowerCase() &&
+      user.password === password
+  );
+
+  if (user) {
+    alert(`Welcome back, ${user.username}! You are successfully logged in.`);
+    // Redirect or show logged-in view (example: redirect to a dashboard page)
+    window.location.href = "/index.htm";
+  } else {
+    alert("Invalid username or password. Please try again.");
+  }
+});

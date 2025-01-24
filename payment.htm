@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airplane Seat Booking</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #eef2f3;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(145deg, #007bff, #0056b3);
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-size: 1.5em;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 25px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    .seat-layout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .seat-row {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .aisle {
+      width: 50px;
+    }
+
+    .seat {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(145deg, #e0e0e0, #f8f8f8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1), -2px -2px 5px rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .seat:hover {
+      background: #d6d6d6;
+    }
+
+    .seat.selected {
+      background: #007bff;
+      color: white;
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.5);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-top: 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #payment-page input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .seat {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Airplane Seat Booking System
+  </header>
+
+  <div id="booking-page" class="container">
+    <h2>Select Your Seat</h2>
+    <div class="seat-layout">
+      <!-- Rows with aisle -->
+      <div class="seat-row">
+        <div class="seat" data-seat="1A">1A</div>
+        <div class="seat" data-seat="1B">1B</div>
+        <div class="aisle"></div>
+        <div class="seat" data-seat="1C">1C</div>
+        <div class="seat" data-seat="1D">1D</div>
+      </div>
+      <div class="seat-row">
+        <div class="seat" data-seat="2A">2A</div>
+        <div class="seat" data-seat="2B">2B</div>
+        <div class="aisle"></div>
+        <div class="seat" data-seat="2C">2C</div>
+        <div class="seat" data-seat="2D">2D</div>
+      </div>
+      <div class="seat-row">
+        <div class="seat" data-seat="3A">3A</div>
+        <div class="seat" data-seat="3B">3B</div>
+        <div class="aisle"></div>
+        <div class="seat" data-seat="3C">3C</div>
+        <div class="seat" data-seat="3D">3D</div>
+      </div>
+      <div class="seat-row">
+        <div class="seat" data-seat="4A">4A</div>
+        <div class="seat" data-seat="4B">4B</div>
+        <div class="aisle"></div>
+        <div class="seat" data-seat="4C">4C</div>
+        <div class="seat" data-seat="4D">4D</div>
+      </div>
+    </div>
+    <button id="proceed-payment">Proceed to Payment</button>
+  </div>
+
+  <div id="payment-page" class="container" style="display: none;">
+    <h2>Payment Page</h2>
+    <label for="card-number">Card Number</label>
+    <input type="text" id="card-number" placeholder="Enter your card number">
+
+    <label for="expiry-date">Expiry Date</label>
+    <input type="month" id="expiry-date">
+
+    <label for="cvv">CVV</label>
+    <input type="password" id="cvv" placeholder="Enter CVV">
+
+    <button id="make-payment">Make Payment</button>
+  </div>
+
+  <script>
+    let selectedSeat = null;
+
+    document.querySelectorAll('.seat').forEach(seat => {
+      seat.addEventListener('click', function () {
+        if (selectedSeat) {
+          selectedSeat.classList.remove('selected');
+        }
+        this.classList.add('selected');
+        selectedSeat = this;
+        localStorage.setItem('selectedSeat', this.getAttribute('data-seat'));
+      });
+    });
+
+    document.getElementById('proceed-payment').addEventListener('click', function () {
+      if (!selectedSeat) {
+        alert('Please select a seat before proceeding.');
+        return;
+      }
+      document.getElementById('booking-page').style.display = 'none';
+      document.getElementById('payment-page').style.display = 'block';
+    });
+
+    document.getElementById('make-payment').addEventListener('click', function () {
+      const seat = localStorage.getItem('selectedSeat');
+      alert(`Payment successful for seat ${seat}!`);
+    });
+  </script>
+</body>
+</html>
