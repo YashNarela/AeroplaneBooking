@@ -4,87 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flights</title>
-  <style>
-    /* Table styling */
-    table {
-      width: 80%;
-      margin: 20px auto;
-      border-collapse: collapse;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    th, td {
-      padding: 12px 20px;
-      text-align: center;
-      border: 1px solid #ddd;
-    }
-
-    th {
-      background-color: #4CAF50;
-      color: white;
-      font-weight: bold;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    tr:hover {
-      background-color: #d1e7dd;
-      cursor: pointer;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      table {
-        width: 100%;
-        font-size: 14px;
-      }
-
-      th, td {
-        padding: 10px;
-      }
-    }
-  </style>
+ 
+  <link rel="stylesheet" href="flights.css">
 </head>
 <body>
   <h1 style="text-align: center; font-family: Arial, sans-serif;">Available Flights</h1>
   <div id="fi"></div>
 
-  <script>
-    // Retrieve flight data from localStorage
-    const flightData = JSON.parse(localStorage.getItem("flightData"));
 
-    if (flightData) {
-      let table = `<table> 
-                      <tr>
-                        <th>Flight Name</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Departure</th>
-                        <th>Arrival</th>
-                        <th>Price</th>
-                      </tr>`;
-
-      flightData.forEach((flight) => {
-        table += `<tr>
-                      <td>${flight.airline}</td>
-                      <td>${flight.from}</td>
-                      <td>${flight.to}</td>
-                      <td>${flight.departureTime}</td>
-                      <td>${flight.arrivalTime}</td>
-                      <td>${flight.price}</td>
-                    </tr>`;
-      });
-
-      table += `</table>`;
-
-      document.getElementById("fi").innerHTML = table;
-    } else {
-      document.getElementById("fi").innerHTML = "<p style='text-align: center;'>No flight data available.</p>";
-    }
-  </script>
+  <script src="/flights.js"></script>
 </body>
 </html>

@@ -4,224 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlyNow</title>
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-      body {
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(120deg, #fdfbfb, #ebedee);
-        color: #333;
-      }
-
-      nav {
-        background: #004aad;
-        padding: 20px 10%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      nav .main-menu__logo img {
-        max-height: 50px;
-      }
-
-      nav .main-menu__nav ul {
-        list-style: none;
-        display: flex;
-        gap: 20px;
-      }
-
-      nav .main-menu__nav ul li {
-        position: relative;
-      }
-
-      nav .main-menu__nav ul li a {
-        text-decoration: none;
-        color: white;
-        font-weight: 500;
-        padding: 5px 10px;
-        transition: 0.3s;
-      }
-
-      nav .main-menu__nav ul li a:hover,
-      nav .main-menu__nav ul li a.active {
-        background: #005bb5;
-        border-radius: 5px;
-      }
-
-      nav .main-menu__nav ul li .sub-menu {
-        display: none;
-        position: absolute;
-        background: white;
-        color: #004aad;
-        top: 100%;
-        left: 0;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
-        overflow: hidden;
-        z-index: 10;
-      }
-
-      nav .main-menu__nav ul li:hover .sub-menu {
-        display: block;
-      }
-
-      nav .main-menu__nav ul li .sub-menu li a {
-        padding: 10px 15px;
-        display: block;
-        color: #333;
-      }
-
-      .section1 {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 40px 10%;
-      }
-
-      .section1_part1 {
-        max-width: 600px;
-      }
-
-      .section1_part1 h1 {
-        font-size: 2.8rem;
-        line-height: 1.2;
-        color: #004aad;
-      }
-
-      .section1_part1_span {
-        color: #ffa500;
-      }
-
-      .section1_part1 p {
-        margin: 20px 0;
-        color: #555;
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-
-      .section1_part1 button {
-        background: #ffa500;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-
-      .section1_part1 button:hover {
-        background: #ff8c00;
-      }
-
-      .imageSection1 img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-      }
-
-      .section3 {
-        background: #f9f9f9;
-        padding: 40px 10%;
-        border-radius: 20px;
-        margin: 20px auto;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .section3_sub1,
-      .section3_sub2,
-      .section3_sub3 {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        margin-bottom: 20px;
-      }
-
-      .section3_sub button {
-        background: #004aad;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-
-      .section3_sub button:hover {
-        background: #003580;
-      }
-
-      .section3_sub3 input[type="radio"] {
-        margin-right: 10px;
-      }
-
-      .booking-form {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .booking-form h2 {
-        color: #004aad;
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-      }
-
-      .form-group {
-        margin-bottom: 15px;
-      }
-
-      .form-group label {
-        display: block;
-        margin-bottom: 5px;
-        color: #555;
-      }
-
-      .form-group input[type="text"],
-      .form-group input[type="date"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 1rem;
-        background: #f9f9f9;
-      }
-
-      .form-group input:focus {
-        border-color: #004aad;
-        outline: none;
-      }
-
-      #btnfly {
-        background: #ffa500;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-
-      #btnfly:hover {
-        background: #ff8c00;
-      }
-
-      .display {
-        margin: 40px 10%;
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav>
@@ -330,11 +122,21 @@
           <form>
             <div class="form-group">
               <label for="from">From</label>
-              <input type="text" id="from" name="from" placeholder="Enter departure location" />
+              <input
+                type="text"
+                id="from"
+                name="from"
+                placeholder="Enter departure location"
+              />
             </div>
             <div class="form-group">
               <label for="to">To</label>
-              <input type="text" id="to" name="to" placeholder="Enter destination" />
+              <input
+                type="text"
+                id="to"
+                name="to"
+                placeholder="Enter destination"
+              />
             </div>
             <div class="form-group inline">
               <div class="form-group">
@@ -348,13 +150,11 @@
             </div>
             <button id="btnfly">Search Flights</button>
           </form>
-
-        
         </div>
       </div>
     </div>
 
-      <div  id="display"></div>
+    <div id="display"></div>
 
     <script src="/script.js"></script>
   </body>

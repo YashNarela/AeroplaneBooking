@@ -15,7 +15,7 @@ loginButton.addEventListener("click", () => {
 const loginForm = document.querySelector(".form-box.login form");
 const registerForm = document.querySelector(".form-box.register form");
 
-// Toggle between login and register panels
+
 registerButton.addEventListener("click", () => {
   container.classList.add("register-active");
 });
@@ -24,11 +24,11 @@ loginButton.addEventListener("click", () => {
   container.classList.remove("register-active");
 });
 
-// Handle registration
+
 registerForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Get user input
+  
   const username = registerForm
     .querySelector('input[placeholder="Username"]')
     .value.trim();
@@ -58,21 +58,21 @@ registerForm.addEventListener("submit", (e) => {
   if (userExists) {
     alert("User already exists. Please use a different username or email.");
   } else {
-    // Add the new user to the users array
+
     users.push({ username, email, password });
     localStorage.setItem("users", JSON.stringify(users));
     alert("Registration successful! You can now log in.");
-    // Switch to login panel
+
     container.classList.remove("register-active");
     registerForm.reset();
   }
 });
 
-// Handle login
+
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Get login input
+
   const username = loginForm
     .querySelector('input[placeholder="Username"]')
     .value.trim();
@@ -85,7 +85,7 @@ loginForm.addEventListener("submit", (e) => {
     return;
   }
 
-  // Retrieve user data from local storage
+
   const users = JSON.parse(localStorage.getItem("users")) || [];
   const user = users.find(
     (user) =>
@@ -95,7 +95,7 @@ loginForm.addEventListener("submit", (e) => {
 
   if (user) {
     alert(`Welcome back, ${user.username}! You are successfully logged in.`);
-    // Redirect or show logged-in view (example: redirect to a dashboard page)
+
     window.location.href = "/index.htm";
   } else {
     alert("Invalid username or password. Please try again.");
