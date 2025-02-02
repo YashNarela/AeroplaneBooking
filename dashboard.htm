@@ -1,40 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Airline Ticket Dashboard</title>
-    
-    <link rel="stylesheet" href="dashboard.css">
-</head>
-<body>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
     <div class="dashboard">
-        <div class="profile-card">
-            <img src="/Images/boat.webp" alt="Profile Photo">
-            <h2>John Doe</h2>
-            <p>Passenger</p>
+      <div class="profile-card">
+        <img src="/Images/boat.webp" alt="Profile Photo" />
+        <h2 id="name">John Doe</h2>
+        <p>Passenger</p>
 
-            <div class="info">
-                <strong>Email:</strong> john.doe@example.com
-            </div>
-            <div class="info">
-                <strong>Phone:</strong> +1234567890
-            </div>
-            <div class="info">
-                <strong>Gender:</strong> Male
-            </div>
-
-            <div class="ticket">
-                <p><strong>Flight:</strong> AI-203</p>
-                <p><strong>From:</strong> New York (JFK)</p>
-                <p><strong>To:</strong> London (LHR)</p>
-                <p><strong>Date:</strong> 25th Jan 2025</p>
-                <p><strong>Seat:</strong> 14A</p>
-                <p><strong>Class:</strong> Economy</p>
-            </div>
-
-            <button class="btn">Edit Profile</button>
+        <div class="info">
+          <strong>Email:</strong>
+          <span id="email"></span>
         </div>
+        <div class="info">
+          <strong>Phone:</strong>
+          <span id="phone"></span>
+        </div>
+        <div class="info">
+          <strong>Adress:</strong>
+          <span id="address"></span>
+        </div>
+     
+
+        <table class="ticket" border="1px" >
+          <tr>
+            <th>Flight</th>
+            <th><strong>From </strong></th>
+            <th><strong>To </strong></th>
+            <th><strong>Date</strong></th>
+            <th><strong>Seat</strong></th>
+            <th><strong>Price</strong></th>
+            <th><strong>Status</strong></th>
+            <th><strong>Cancel</strong></th>
+
+
+
+          </tr>
+
+          <tr>
+            <td><span id="flight"></span></td>
+
+            <td><span id="from"></span></td>
+
+            <td><span id="to"></span></td>
+
+            <td><span id="date"></span></td>
+
+            <td><span id="seat"></span></td>
+
+            <td><span id="price"></span></td>
+            <td><span id="status"></span></td>
+            <td><span id="deleteit"><i class='bx bxs-message-rounded-x'></i></span></td>
+
+
+          </tr>
+        </table>
+
+        <p id="para"></p>
+        <button class="btn">Add Passanger</button>
+      </div>
     </div>
-</body>
+
+
+ 
+
+
+    <script src="/dashboard.js"></script>
+  </body>
 </html>

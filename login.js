@@ -39,7 +39,7 @@ registerForm.addEventListener("submit", (e) => {
     'input[placeholder="password"]'
   ).value;
 
-  alert(password);
+ 
   if (!username || !email || !password) {
     alert("All fields are required.");
     return;

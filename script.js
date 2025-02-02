@@ -25,8 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    console.log(from, to);
-
+  
     const api = "http://localhost:3000/flights";
     try {
       const response = await fetch(api);
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </tr>
       `;
 
-      // Filter and display flights
+    
       data.forEach((flight) => {
         if (
           flight.from.toLowerCase() === from &&
@@ -69,12 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Redirect to the booking page with flight details
+
   window.redirectToBooking = function (flightId) {
-    // Save the selected flight ID to localStorage
+   
     localStorage.setItem("selectedFlightId", flightId);
 
-    // Redirect to the booking page
+
     window.location.href = "book.htm";
   };
 
