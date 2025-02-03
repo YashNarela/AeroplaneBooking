@@ -26,6 +26,7 @@
         list-style: none;
         display: flex;
         gap: 20px;
+        flex-wrap: wrap;
       }
 
       nav .main-menu__nav ul li {
